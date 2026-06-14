@@ -16,6 +16,7 @@ public class Main {
             Personaje mortifago = ReclutadorSimpleFactory.crearMortifago();
             System.out.println(mortifago);
         }
+        
 	}
 
 }
