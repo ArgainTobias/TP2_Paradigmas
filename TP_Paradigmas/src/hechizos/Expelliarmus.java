@@ -2,7 +2,7 @@ package hechizos;
 
 import personajes.Personaje;
 
-public class Expelliarmus implements Hechizo{
+public class Expelliarmus implements Hechizo{ //hola
 	
 	 @Override
 	public int ejecutar(Personaje lanzador, Personaje objetivo) {
