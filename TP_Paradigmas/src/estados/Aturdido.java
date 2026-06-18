@@ -8,6 +8,14 @@ public class Aturdido extends EstadoPersonaje{
 		this.duracion=duracion;
 	}
 	
+	@Override
+    public EstadoPersonaje recibirDanio(Personaje p, int danio) {
+        p.reducirHp(danio);                  // daño completo
+        if (p.getHp() <= 0) {
+            return new Muerto();
+        }
+        return this;
+    }
 	public EstadoPersonaje pasarTurno() {
 		duracion--;
 		if(duracion <=0) {

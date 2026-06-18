@@ -9,6 +9,7 @@ public class Protegido extends EstadoPersonaje{
 	@Override
 	public EstadoPersonaje recibirDanio(Personaje p,int danio) {
 		p.reducirHp(danio/2);
+		duracion--;
 		if(p.getHp()<=0) {
 			return new Muerto();
 		}
