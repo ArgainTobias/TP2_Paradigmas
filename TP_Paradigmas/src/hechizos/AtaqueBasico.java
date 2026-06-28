@@ -1,10 +1,10 @@
 package hechizos;
 import personajes.Personaje;
 
-public class Protego implements Hechizo{
+public class AtaqueBasico implements Hechizo{
 	@Override
 	public int ejecutar(Personaje lanzador, Personaje objetivo) {
-		lanzador.proteger(3);
+		objetivo.reducirHp(5);
 		return 0;
 	}
 }
