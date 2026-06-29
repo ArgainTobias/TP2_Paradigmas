@@ -7,4 +7,9 @@ public class Protego implements Hechizo{
 		lanzador.proteger(3);
 		return 0;
 	}
+	
+	@Override
+	public String toString() {
+	    return getClass().getSimpleName();
+	}
 }
