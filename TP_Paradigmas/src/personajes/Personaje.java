@@ -32,6 +32,10 @@ public abstract class Personaje{
 		return hp;
 	}
 	
+	public int getLvl() {
+		return lvl;
+	}
+	
 	//PRIMITIVAS ESTADOS
 	
 	public void recibirDanio(int danio) {
@@ -71,4 +75,23 @@ public abstract class Personaje{
 	    return nombre + " (" + getClass().getSimpleName() + ") [HP: " + hp + ", Nivel: " + lvl + ", Hechizos: " + hechizos.size() + "]";
 	}	
 	
+	//COMPARACION, HASH Y EQUALS PARA EL SET DE BATALLON
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if(this == obj) {
+			return true;
+		}
+		if(!(obj instanceof Personaje)) {
+			return false;
+		}
+		Personaje otroPersonaje = (Personaje) obj;
+		return this.nombre.equals(otroPersonaje.nombre);
+	}
+	
+	@Override
+	public int hashCode() {
+		return java.util.Objects.hash(nombre);
+	}
 }
