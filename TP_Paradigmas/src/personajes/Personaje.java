@@ -68,7 +68,7 @@ public abstract class Personaje{
 	
 	@Override
 	public String toString() {
-	    return nombre + " (" + getClass().getSimpleName() + ") [HP: " + hp + ", Nivel: " + lvl + ", Hechizos: " + hechizos.size() + "]";
+	    return nombre + " (" + getClass().getSimpleName() + ") [HP: " + hp + ", Nivel: " + lvl + ", Hechizos: " + hechizos.size() +"|"+ estado.getClass().getSimpleName()+"]";
 	}	
 	
 }
