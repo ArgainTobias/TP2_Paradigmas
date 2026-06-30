@@ -1,7 +1,7 @@
 package main;
-import reclutador.*;
-
-import personajes.*;
+import personajes.Batallon;
+import reclutador.ReclutadorSimpleFactory;
+import java.util.Random;
 
 public class Main {
 
@@ -18,6 +18,7 @@ public class Main {
             Personaje mortifago = ReclutadorSimpleFactory.crearMortifago();
             System.out.println(mortifago);
            */ 
+			Random rand = new Random();
             Batallon batallonMagos = new Batallon();
             Batallon batallonMortifagos = new Batallon();
             System.out.println("=== Batallon magos ===");
@@ -30,7 +31,13 @@ public class Main {
             while(batallonMortifagos.getCantSoldados()!=3) {
             	batallonMortifagos.agregarPersonaje(ReclutadorSimpleFactory.crearMortifago());				
 			}
-            batallonMortifagos.mostrarBatallon();      
+            batallonMortifagos.mostrarBatallon();   
+            
+            while(batallonMagos.tienePersonajesSaludables() && batallonMortifagos.tienePersonajesSaludables()) {
+            	if(rand.nextBoolean()) {
+            		//batallonMagos.atacar(batallonMortifagos);
+            	}
+            }
         }
         
 	}

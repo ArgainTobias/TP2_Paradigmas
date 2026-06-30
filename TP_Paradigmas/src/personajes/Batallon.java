@@ -1,9 +1,9 @@
 package personajes;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.List;
 
 import hechizos.Hechizo;
 
@@ -28,7 +28,7 @@ public class Batallon{
 			
 			System.out.println(personaje);
 			for(Hechizo hechizo : personaje.getHechizos()) {
-				System.out.println("Hechizos disponibles:"+ hechizo);
+				System.out.println("-> Hechizos disponibles del personaje: "+ hechizo);
 			}
 			
 		}
@@ -46,6 +46,21 @@ public class Batallon{
 			}
 		}
 		return false;
+	}
+	
+	public void atacar (Batallon batallonEnemigo) {
+		Hechizo hechizoUsado;
+		 for (Personaje aliado: setBatallon) {
+			for(Personaje enemigo: batallonEnemigo.setBatallon) {
+				//hechizoUsado=
+				if(enemigo.getHp() > 0) { //si esta vivo -- calculo que lo puedo hacer con el state
+					aliado.lanzarHechizo(null, enemigo);
+					System.out.println(aliado.getNombre() + "ataco a "+ enemigo.getNombre());
+				}
+			}
+				
+			 
+		}
 	}
 	
 	public void asignarHechizosAtaque  () {

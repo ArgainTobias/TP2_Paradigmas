@@ -36,6 +36,10 @@ public abstract class Personaje{
 		return lvl;
 	}
 	
+	public String getNombre() {
+		return nombre;
+	}
+	
 	//PRIMITIVAS ESTADOS
 	
 	public void recibirDanio(int danio) {
