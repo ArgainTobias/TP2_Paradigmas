@@ -2,12 +2,10 @@ package hechizos;
 
 import personajes.Personaje;
 
-public class AvadaKedavra implements Hechizo {
+public class AvadaKedavra extends HechizoAtaque {
 	@Override
-	public int ejecutar(Personaje lanzador, Personaje objetivo) {
-		objetivo.aturdir(1);
-		objetivo.reducirHp(150); //el avadaKedabra te mata de una
-		return 0;
+	public void ejecutar(Personaje lanzador, Personaje objetivo) {
+		objetivo.recibirDanio(objetivo.getHp()); //el avadaKedabra te mata de una
 	}
 	
 	@Override

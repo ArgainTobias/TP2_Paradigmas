@@ -1,11 +1,11 @@
 package hechizos;
+
 import personajes.Personaje;
 
-public class Protego implements Hechizo{
+public class Protego extends HechizoDefensa{
 	@Override
-	public int ejecutar(Personaje lanzador, Personaje objetivo) {
-		lanzador.proteger(3);
-		return 0;
+	public void ejecutar(Personaje lanzador, Personaje objetivo) {
+		lanzador.proteger(1);
 	}
 	
 	@Override

@@ -1,7 +1,8 @@
 package main;
-import personajes.Batallon;
 import reclutador.ReclutadorSimpleFactory;
 import java.util.Random;
+
+import batallon.Batallon;
 
 public class Main {
 
@@ -32,12 +33,32 @@ public class Main {
             	batallonMortifagos.agregarPersonaje(ReclutadorSimpleFactory.crearMortifago());				
 			}
             batallonMortifagos.mostrarBatallon();   
-            
-            while(batallonMagos.tienePersonajesSaludables() && batallonMortifagos.tienePersonajesSaludables()) {
-            	if(rand.nextBoolean()) {
-            		//batallonMagos.atacar(batallonMortifagos);
-            	}
+
+            while (batallonMagos.tienePersonajesSaludables() && batallonMortifagos.tienePersonajesSaludables()) {
+            	 
+                // los ataques pueden tener salidas por pantalla para mostrar lo que sucede
+                if (rand.nextBoolean()) {
+                  batallonMagos.atacar(batallonMortifagos);
+                  if (batallonMortifagos.tienePersonajesSaludables()) {
+                    batallonMortifagos.atacar(batallonMagos);
+                  }
+                } else {
+                  batallonMortifagos.atacar(batallonMagos);
+                  if (batallonMagos.tienePersonajesSaludables()) {
+                    batallonMagos.atacar(batallonMortifagos);
+                  }
+                }
+           
+                System.out.println("----------------------------");
+              }
+           
+              if (batallonMagos.tienePersonajesSaludables()) {
+                System.out.println("¡Los magos han ganado la batalla!");
+              } else {
+                System.out.println("¡Los mortífagos han ganado la batalla!");
+              }
             }
         }
-        
-	}
+	
+		
+       

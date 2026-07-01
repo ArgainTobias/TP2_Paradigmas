@@ -2,13 +2,12 @@ package hechizos;
 
 import personajes.Personaje;
 
-public class Expelliarmus implements Hechizo{
+public class Expelliarmus extends HechizoAtaque{
 	
 	 @Override
-	public int ejecutar(Personaje lanzador, Personaje objetivo) {
-		objetivo.reducirHp(10);
+	public void ejecutar(Personaje lanzador, Personaje objetivo) {
+		objetivo.recibirDanio(10);
 		objetivo.aturdir(1);
-		return 0;
 	}
 	 
 	 @Override

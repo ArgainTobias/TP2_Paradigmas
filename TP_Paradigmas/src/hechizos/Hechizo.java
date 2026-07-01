@@ -1,6 +1,8 @@
 package hechizos;
+import batallon.Batallon;
 import personajes.Personaje;
 
 public interface Hechizo {
-	int ejecutar(Personaje lanzador, Personaje objetivo);
+	void ejecutar(Personaje lanzador, Personaje objetivo);
+	Personaje seleccionarObjetivo(Personaje lanzador, Batallon propio, Batallon enemigo);
 }
