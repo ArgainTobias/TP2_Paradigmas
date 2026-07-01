@@ -3,35 +3,25 @@ package personajes;
 import hechizos.Hechizo;
 import java.util.List;
 import java.util.ArrayList;
+import estados.EstadoPersonaje;
+import estados.Sano;
 
 public abstract class Personaje{
 	
 	private int hp,lvl;
 	private String nombre;
 	private List <Hechizo> hechizos = new ArrayList<>();
-//	private double xDanio,xCura;
+	private EstadoPersonaje estado;
 	
 	public Personaje(int hp, int lvl, String nombre) {
 		this.hp = hp;
 		this.lvl = lvl;
 		this.nombre = nombre;
-//		this.xCura =1.0;
-//		this.xDanio = 1.0;
+		estado = new Sano();
 	}
-	
-	public void agregarHechizo(Hechizo h) {
-		hechizos.add(h);
-	}
-	
-	public void lanzarHechizo(Hechizo h,Personaje objetivo) {
-		h.ejecutar(this, objetivo);
-	}
-	
-//	public double multiplicadorDanio() {
-//        return 1.0;
-//    }
+	// GETTERS Y SETTERS PERSONAJE
 
-	public void recibirDanio(int valor) {
+	public void reducirHp(int valor) {
 		hp-=valor;
 		if(hp<0) {
 			hp=0;
@@ -42,6 +32,44 @@ public abstract class Personaje{
 		return hp;
 	}
 	
+	public int getLvl() {
+		return lvl;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
+	//PRIMITIVAS ESTADOS
+	
+	public void recibirDanio(int danio) {
+		this.estado=estado.recibirDanio(this, danio);
+	}
+	
+	public void proteger(int duracion) {
+	    this.estado = estado.proteger(duracion);
+	}
+
+	public void aturdir(int duracion) {
+	    this.estado = estado.aturdir(duracion);
+	}
+	
+	public boolean puedeActuar() {
+		return estado.puedeActuar();
+	}
+	
+	//PRIMITIVAS DE HECHIZOS
+	
+	public void agregarHechizo(Hechizo h) {
+		hechizos.add(h);
+	}
+	
+	public void lanzarHechizo(Hechizo h,Personaje objetivo) {
+		h.ejecutar(this, objetivo);
+	}
+	
+
+	
 	public List<Hechizo> getHechizos() {
 	    return hechizos;
 	}
@@ -51,4 +79,23 @@ public abstract class Personaje{
 	    return nombre + " (" + getClass().getSimpleName() + ") [HP: " + hp + ", Nivel: " + lvl + ", Hechizos: " + hechizos.size() + "]";
 	}	
 	
+	//COMPARACION, HASH Y EQUALS PARA EL SET DE BATALLON
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if(this == obj) {
+			return true;
+		}
+		if(!(obj instanceof Personaje)) {
+			return false;
+		}
+		Personaje otroPersonaje = (Personaje) obj;
+		return this.nombre.equals(otroPersonaje.nombre);
+	}
+	
+	@Override
+	public int hashCode() {
+		return java.util.Objects.hash(nombre);
+	}
 }

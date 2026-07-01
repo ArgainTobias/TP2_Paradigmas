@@ -15,14 +15,14 @@ class PersonajesTest {
     @Test
     void recibirDanio_bajaElHp() {
         Auror a = new Auror("Harry");
-        a.recibirDanio(30);
+        a.reducirHp(30);
         assertEquals(70, a.getHp());
     }
 
     @Test
     void recibirDanio_noBajaDeCero() {
         Auror a = new Auror("Harry");
-        a.recibirDanio(500);
+        a.reducirHp(500);
         assertEquals(0, a.getHp());
     }
     

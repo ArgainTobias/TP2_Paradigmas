@@ -1,12 +1,15 @@
 package hechizos;
-
 import personajes.Personaje;
 
 public class Protego implements Hechizo{
-	
-	 @Override
+	@Override
 	public int ejecutar(Personaje lanzador, Personaje objetivo) {
-		objetivo.recibirDanio(2000);
+		lanzador.proteger(3);
 		return 0;
+	}
+	
+	@Override
+	public String toString() {
+	    return getClass().getSimpleName();
 	}
 }
