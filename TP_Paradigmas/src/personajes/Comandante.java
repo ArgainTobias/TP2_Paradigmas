@@ -7,5 +7,6 @@ public class Comandante extends Mortifago{
 		super(150,3,nombre);
 		agregarHechizo(new Expelliarmus());
 		agregarHechizo(new AvadaKedavra());
+		agregarHechizo(new Imperio());
 	}
 }

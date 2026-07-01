@@ -13,7 +13,7 @@ public class Main2 {
 		System.out.println(p1);
 		System.out.println(p2);
 		
-		p1.lanzarHechizo(new Protego(), p2);
+		System.out.println(p1.lanzarHechizo(new Protego(), p1));
 		p2.lanzarHechizo(new AvadaKedavra(), p1);
 		p2.lanzarHechizo(new AvadaKedavra(), p1);
 		

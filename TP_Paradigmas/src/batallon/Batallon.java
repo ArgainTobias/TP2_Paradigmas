@@ -30,21 +30,30 @@ public class Batallon {
 	}
 	public void atacar(Batallon objetivo) {
 		lanzadosTurno.clear(); //vacio el set porque empieza el turno
-		Random rand = new Random();
-		List<Personaje> personajesObjetivo = objetivo.getPersonajesSaludables();
-		int cantObjetivo =  personajesObjetivo.size();
 		for (Personaje p : personajes) {
-			int indiceObjetivo = rand.nextInt(cantObjetivo);
-			Hechizo hechizo = elegirHechizoDisponible(p);
-			p.lanzarHechizo(hechizo, personajesObjetivo.get(indiceObjetivo));
-			secuenciaAcciones.add(p.getNombre() + " lanza " + hechizo + " a " + personajesObjetivo.get(indiceObjetivo).getNombre());
-			System.out.println(p.getNombre() + " lanza " + hechizo + " a " + personajesObjetivo.get(indiceObjetivo).getNombre());
-			ArrayList<Hechizo> lanzados = hechizosLanzados.get(p);
-			if(hechizo != null)
+			
+			if(p.puedeActuar())
 			{
-				lanzados.add(hechizo);
-				hechizosLanzados.put(p, lanzados); //agrego a la lista de lanzados del personaje
-				lanzadosTurno.add(hechizo); //agrego al set de los lanzados en este turno					
+				Hechizo hechizo = elegirHechizoDisponible(p);
+				if(hechizo != null)
+				{
+					Personaje obj = hechizo.seleccionarObjetivo(p, this, objetivo);
+					if(obj != null) {
+						
+						secuenciaAcciones.add( p.lanzarHechizo(hechizo, obj));
+						ArrayList<Hechizo> lanzados = hechizosLanzados.get(p);
+						lanzados.add(hechizo);
+						hechizosLanzados.put(p, lanzados); //agrego a la lista de lanzados del personaje
+						lanzadosTurno.add(hechizo); //agrego al set de los lanzados en este turno					
+					}
+					
+				}else {
+					System.out.println(p.getNombre() + " no tiene hechizos disponibles para lanzar este turno");
+				}	
+				
+			}
+			else {
+				System.out.println(p.getNombre() + " pierde su turno porque esta " + p.getEstado().getClass().getSimpleName());
 			}
 		}
 	}

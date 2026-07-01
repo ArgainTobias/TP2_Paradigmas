@@ -40,22 +40,31 @@ public abstract class Personaje{
 		return nombre;
 	}
 	
+	public EstadoPersonaje getEstado() {
+		
+		return estado;
+	}
+	
 	//PRIMITIVAS ESTADOS
 	
 	public void recibirDanio(int danio) {
-		this.estado=estado.recibirDanio(this, danio);
+		this.estado=estado.recibirDanio(this, danio*lvl);
 	}
 	
 	public void proteger(int duracion) {
-	    this.estado = estado.proteger(duracion);
+	    this.estado = estado.proteger(this, duracion);
 	}
 
 	public void aturdir(int duracion) {
-	    this.estado = estado.aturdir(duracion);
+	    this.estado = estado.aturdir(this, duracion);
 	}
 	
 	public boolean puedeActuar() {
 		return estado.puedeActuar();
+	}
+	
+	public boolean puedeSerObjetivo() {
+		return estado.puedeSerObjetivo();
 	}
 	
 	//PRIMITIVAS DE HECHIZOS
@@ -64,8 +73,8 @@ public abstract class Personaje{
 		hechizos.add(h);
 	}
 	
-	public void lanzarHechizo(Hechizo h,Personaje objetivo) {
-		h.ejecutar(this, objetivo);
+	public String lanzarHechizo(Hechizo h,Personaje objetivo) {
+		return h.ejecutar(this, objetivo);
 	}
 	
 

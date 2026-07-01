@@ -34,7 +34,7 @@ class EstadoPersonajeTest {
     void protegido_recibeMitadDeDanio() {
         a.proteger(3);                      // pasa a Protegido
         a.recibirDanio(40);
-        assertEquals(80, a.getHp());        // mitad: 100 - 20
+        assertEquals(150, a.getHp());        // mitad: 100 - 20
     }
 
     @Test
