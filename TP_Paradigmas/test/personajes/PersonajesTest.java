@@ -1,27 +1,35 @@
 package personajes;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class PersonajesTest {
 
+	Auror a;
+	Seguidor s;
+	
+	@BeforeEach
+	public void preparar() {
+		a = new Auror("Harry");
+		s = new Seguidor("Volvemort");
+	}
+	
 	@Test
     void auror_naceConValoresCorrectos() {
-        Auror a = new Auror("Harry");        // sin import, mismo paquete
-        assertEquals(100, a.getHp());
+            // sin import, mismo paquete
+        assertEquals(150, a.getHp());
     }
 
     @Test
     void recibirDanio_bajaElHp() {
-        Auror a = new Auror("Harry");
         a.reducirHp(30);
-        assertEquals(70, a.getHp());
+        assertEquals(120, a.getHp());
     }
 
     @Test
     void recibirDanio_noBajaDeCero() {
-        Auror a = new Auror("Harry");
         a.reducirHp(500);
         assertEquals(0, a.getHp());
     }

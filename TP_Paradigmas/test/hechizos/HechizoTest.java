@@ -1,21 +1,32 @@
 package hechizos;
-import personajes.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import personajes.Auror;
+import personajes.Seguidor;
 
 class HechizoTest {
 
+	Auror a;
+	Seguidor s;
+	Expelliarmus expe;
+	
+	@BeforeEach
+	public void preparar() {
+		a = new Auror("Harry");
+		s = new Seguidor("Voldemort");
+		expe = new Expelliarmus();
+	}
+	
 	@Test
 	void testExpelliarmus() {
-		Auror a = new Auror("Prueba");
-		Seguidor s = new Seguidor("PruebaSeguidor");
-		System.out.println(a);
-		s.lanzarHechizo(s.getHechizos().get(0), a);
-		assertEquals(90,a.getHp());
-		s.lanzarHechizo(s.getHechizos().get(0), a);
-		assertEquals(80,a.getHp());
+		s.lanzarHechizo(expe, a);
+		s.lanzarHechizo(expe, a);
+		assertEquals(130,a.getHp());
+		s.lanzarHechizo(expe, a);
+		assertEquals(120,a.getHp());
 	}
 
 }
