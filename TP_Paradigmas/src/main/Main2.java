@@ -4,8 +4,6 @@ import hechizos.*;
 import personajes.Auror;
 import personajes.Comandante;
 import personajes.Personaje;
-import testBatalla.*;
-
 public class Main2 {
 
 	public static void main(String[] args) {

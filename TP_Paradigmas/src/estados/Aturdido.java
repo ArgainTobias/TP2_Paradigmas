@@ -13,7 +13,7 @@ public class Aturdido extends EstadoPersonaje {
     public EstadoPersonaje recibirDanio(Personaje p, int danio) {
         p.reducirHp(danio);                  // daño completo
         if (p.getHp() <= 0) {
-        	System.out.println(p.getNombre() + " ha muerto (0 HP)");
+        	System.out.println("--"+p.getNombre() + " ha muerto (0 HP)");
             return new Muerto();
         }
         return this;
@@ -23,7 +23,7 @@ public class Aturdido extends EstadoPersonaje {
 	public EstadoPersonaje pasarTurno(Personaje p, int duracion) {
 		duracion--;
 		if(duracion <=0) {
-			System.out.println(p.getNombre() + " se recupera");
+			System.out.println("--"+p.getNombre() +" ("+ p.getHp()+"HP) se recupera");
 			return new Sano();
 		}
 		return this;

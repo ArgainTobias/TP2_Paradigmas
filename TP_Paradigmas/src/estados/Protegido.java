@@ -11,7 +11,7 @@ public class Protegido extends EstadoPersonaje{
 		p.reducirHp(0);
 		duracion--;
 		if (duracion <= 0) {
-			System.out.println(p.getNombre() + " pierde su proteccion");
+			System.out.println("--"+p.getNombre() +" ("+ p.getHp()+"HP) pierde su proteccion");
             return new Sano();               // se acabó la protección, vuelve a Sano
         }
 		return this;
@@ -21,7 +21,7 @@ public class Protegido extends EstadoPersonaje{
 	public EstadoPersonaje aturdir(Personaje p, int duracion) {
 		duracion--;
 		if(duracion==0) {			
-			System.out.println(p.getNombre() + " pierde su proteccion");
+			System.out.println("--"+p.getNombre() +" ("+ p.getHp()+"HP) pierde su proteccion");
 			return new Sano();
 		}
 		

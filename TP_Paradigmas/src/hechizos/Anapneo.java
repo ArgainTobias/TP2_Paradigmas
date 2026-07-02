@@ -2,19 +2,21 @@ package hechizos;
 
 import personajes.Personaje;
 
-public class Anapneo extends HechizoAmistoso{
+public class Anapneo extends HechizoAmistoso {
 
 	@Override
 	public String ejecutar(Personaje lanzador, Personaje objetivo) {
-		String msj = lanzador.getNombre() + " cura usando " + getClass().getSimpleName() + " a " + objetivo.getNombre();
+		int cura = -20 * lanzador.getLvl();
+		String msj = lanzador.getNombre() + " (" + lanzador.getHp() + "HP) cura usando " + getClass().getSimpleName()
+				+ " a " + objetivo.getNombre() + " (" + (objetivo.getHp() - cura) + "HP)";
 		System.out.println(msj);
-		objetivo.recibirDanio(-20*lanzador.getLvl());
+		objetivo.recibirDanio(cura);
 		return msj;
 	}
-	
-	 @Override
-		public String toString() {
-		    return getClass().getSimpleName();
-		}
-	
+
+	@Override
+	public String toString() {
+		return getClass().getSimpleName();
+	}
+
 }

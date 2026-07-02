@@ -1,101 +1,97 @@
 package batallon;
- 
+
 import java.util.*;
- 
+
 import hechizos.Hechizo;
 import personajes.Personaje;
- 
+
 public class Batallon {
 	protected Set<Personaje> personajes;
-	protected List<String> secuenciaAcciones; //Ver que tipo de dato contiene la lista (puede quedar string creo) 
+	protected List<String> secuenciaAcciones; // Ver que tipo de dato contiene la lista (puede quedar string creo)
 	protected Map<Personaje, ArrayList<Hechizo>> hechizosLanzados;
 	protected Set<Hechizo> lanzadosTurno;
+
 	public Batallon() {
 		this.personajes = new HashSet<Personaje>();
 		this.secuenciaAcciones = new ArrayList<String>();
 		this.hechizosLanzados = new HashMap<Personaje, ArrayList<Hechizo>>();
 		this.lanzadosTurno = new HashSet<Hechizo>();
 	}
+
 	public void agregarPersonaje(Personaje p) {
 		this.personajes.add(p);
 		this.hechizosLanzados.put(p, new ArrayList<Hechizo>());
 	}
+
 	public boolean tienePersonajesSaludables() {
-		for(Personaje p : this.personajes) {
-			if(p.getHp()>0) {
+		for (Personaje p : this.personajes) {
+			if (p.getHp() > 0) {
 				return true;
 			}
 		}
 		return false;
 	}
+
 	public void atacar(Batallon objetivo) {
-		lanzadosTurno.clear(); //vacio el set porque empieza el turno
+		lanzadosTurno.clear(); // vacio el set porque empieza el turno
 		for (Personaje p : personajes) {
-			
-			if(p.puedeActuar())
-			{
+
+			if (p.puedeActuar()) {
 				Hechizo hechizo = elegirHechizoDisponible(p);
-				if(hechizo != null)
-				{
+				if (hechizo != null) {
 					Personaje obj = hechizo.seleccionarObjetivo(p, this, objetivo);
-					if(obj != null) {
-						
-						secuenciaAcciones.add( p.lanzarHechizo(hechizo, obj));
+					if (obj != null) {
+						secuenciaAcciones.add(p.lanzarHechizo(hechizo, obj));
 						ArrayList<Hechizo> lanzados = hechizosLanzados.get(p);
 						lanzados.add(hechizo);
-						hechizosLanzados.put(p, lanzados); //agrego a la lista de lanzados del personaje
-						lanzadosTurno.add(hechizo); //agrego al set de los lanzados en este turno					
+						hechizosLanzados.put(p, lanzados); // agrego a la lista de lanzados del personaje
+						lanzadosTurno.add(hechizo); // agrego al set de los lanzados en este turno
 					}
-					
-				}else {
-
+				} else {
 					System.out.println(p.getNombre() + " no tiene hechizos disponibles para lanzar este turno");
-				}	
-				
-			}
-			else {
-				System.out.println(p.getNombre() + " pierde su turno porque esta " + p.getEstado().getClass().getSimpleName());
-				p.pasarTurno(1);
+				}
+			} else {
+				if(p.getHp() >0) {
+					System.out.println(p.getNombre() +" ("+ p.getHp()+" HP) pierde su turno porque esta " + p.getEstado().getClass().getSimpleName());
+					p.pasarTurno(1);
+				}
+						
 			}
 		}
 	}
 
-	public List<Personaje> getPersonajesSaludables(){
+	public List<Personaje> getPersonajesSaludables() {
 		List<Personaje> saludables = new ArrayList<Personaje>();
-		for(Personaje p : this.personajes) {
-			if(p.getHp()>0) {
+		for (Personaje p : this.personajes) {
+			if (p.getHp() > 0) {
 				saludables.add(p);
 			}
 		}
 		return saludables;
 	}
+
 	private Hechizo elegirHechizoDisponible(Personaje p) {
-        
-		Random rand = new Random();
-        	for(int i = 0; i < p.getHechizos().size() ; i++) {
-        		
-        		Hechizo h = p.getHechizos().get(rand.nextInt(p.getHechizos().size()-i));
-        		
-        		if(!lanzadosTurno.contains(h)) {
-            		return h;
-            	}
-        		
-        	}
-        return null;
-    }
- 
-	
+	    List<Hechizo> copia = new ArrayList<>(p.getHechizos());
+	    Collections.shuffle(copia);
+	    for (Hechizo h : copia) {
+	        if (!lanzadosTurno.contains(h)) {
+	            return h;
+	        }
+	    }
+	    return null;
+	}
+
 	public void mostrarBatallon() {
-		for(Personaje personaje : personajes){
-			
+		for (Personaje personaje : personajes) {
+
 			System.out.println(personaje);
-			System.out.println("-> Hechizos disponibles del personaje: "+personaje.getHechizos());
-			
+			System.out.println("-> Hechizos disponibles del personaje: " + personaje.getHechizos());
+
 		}
 	}
-	
+
 	public int getCantSoldados() {
 		return personajes.size();
 	}
-	
+
 }

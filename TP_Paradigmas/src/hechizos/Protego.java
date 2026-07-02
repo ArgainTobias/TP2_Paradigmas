@@ -2,17 +2,18 @@ package hechizos;
 
 import personajes.Personaje;
 
-public class Protego extends HechizoDefensa{
+public class Protego extends HechizoDefensa {
 	@Override
 	public String ejecutar(Personaje lanzador, Personaje objetivo) {
-		String msj = lanzador.getNombre() + " se lanza " + this.getClass().getSimpleName() + " a si mismo";
+		String msj = lanzador.getNombre() + "(" + lanzador.getHp() + "HP)se lanza " + this.getClass().getSimpleName()
+				+ " a si mismo";
 		System.out.println(msj);
 		lanzador.proteger(1);
 		return msj;
 	}
-	
+
 	@Override
 	public String toString() {
-	    return getClass().getSimpleName();
+		return getClass().getSimpleName();
 	}
 }
