@@ -9,7 +9,6 @@ import personajes.Estudiante;
 import personajes.Personaje;
 import personajes.Profesor;
 import personajes.Seguidor;
-import testBatalla.*;
 
 public class ReclutadorSimpleFactory {
 	private static Random rand = new Random();

@@ -13,6 +13,10 @@ public abstract class EstadoPersonaje {
 		return this;
 	}
 	
+	public EstadoPersonaje pasarTurno(Personaje p,int duracion) {
+		return this;
+	}
+	
 	public boolean puedeActuar() {
 		return true;
 	}

@@ -48,12 +48,14 @@ public class Batallon {
 					}
 					
 				}else {
+
 					System.out.println(p.getNombre() + " no tiene hechizos disponibles para lanzar este turno");
 				}	
 				
 			}
 			else {
 				System.out.println(p.getNombre() + " pierde su turno porque esta " + p.getEstado().getClass().getSimpleName());
+				p.pasarTurno(1);
 			}
 		}
 	}

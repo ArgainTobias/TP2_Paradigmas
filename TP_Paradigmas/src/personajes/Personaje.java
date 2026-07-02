@@ -59,6 +59,11 @@ public abstract class Personaje{
 	    this.estado = estado.aturdir(this, duracion);
 	}
 	
+	public void pasarTurno(int duracion) {
+	    this.estado = estado.pasarTurno(this,duracion);
+	}
+	
+	
 	public boolean puedeActuar() {
 		return estado.puedeActuar();
 	}

@@ -84,6 +84,8 @@ class HechizoTest {
 	void testImperio(){
 		s.lanzarHechizo(imp, a2);
 		assertEquals("Aturdido",a2.getEstado().getClass().getSimpleName());
+		a2.getEstado().pasarTurno(a2,1);
+		assertEquals("Sano",a2.getEstado().getClass().getSimpleName());
 	}
 	
 	@Test
