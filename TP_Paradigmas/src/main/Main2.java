@@ -1,7 +1,10 @@
 package main;
 
 import hechizos.*;
-import personajes.*;
+import personajes.Auror;
+import personajes.Comandante;
+import personajes.Personaje;
+import testBatalla.*;
 
 public class Main2 {
 

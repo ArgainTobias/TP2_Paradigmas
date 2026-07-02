@@ -7,18 +7,8 @@ import batallon.Batallon;
 public class Main {
 
 	public static void main(String[] args) {
-	/*	tem.out.println("=== Reclutando magos ===");
-	 
-        for (int i = 0; i < 5; i++) {
-            Personaje mago = ReclutadorSimpleFactory.crearMago();
-            System.out.println(mago);
-        }
-
-        System.out.println("\n=== Reclutando mortifagos ===");
-        for (int i = 0; i < 5; i++) {
-            Personaje mortifago = ReclutadorSimpleFactory.crearMortifago();
-            System.out.println(mortifago);
-           */ 
+		
+			int i=1;
 			Random rand = new Random();
             Batallon batallonMagos = new Batallon();
             Batallon batallonMortifagos = new Batallon();
@@ -33,10 +23,10 @@ public class Main {
             	batallonMortifagos.agregarPersonaje(ReclutadorSimpleFactory.crearMortifago());				
 			}
             batallonMortifagos.mostrarBatallon();   
-
+            System.out.println("-----------ARRANCA LA BATALLA--------------");
+            
             while (batallonMagos.tienePersonajesSaludables() && batallonMortifagos.tienePersonajesSaludables()) {
-            	 
-                // los ataques pueden tener salidas por pantalla para mostrar lo que sucede
+            	System.out.println("------------Turno "+ i +"----------------");
                 if (rand.nextBoolean()) {
                   batallonMagos.atacar(batallonMortifagos);
                   if (batallonMortifagos.tienePersonajesSaludables()) {
@@ -48,10 +38,10 @@ public class Main {
                     batallonMagos.atacar(batallonMortifagos);
                   }
                 }
-           
-                System.out.println("----------------------------");
+                i++;           
               }
-           
+            
+            	System.out.println("----------------------------");
               if (batallonMagos.tienePersonajesSaludables()) {
                 System.out.println("¡Los magos han ganado la batalla!");
               } else {

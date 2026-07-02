@@ -7,7 +7,7 @@ public class Protego extends HechizoDefensa{
 	public String ejecutar(Personaje lanzador, Personaje objetivo) {
 		String msj = lanzador.getNombre() + " se lanza " + this.getClass().getSimpleName() + " a si mismo";
 		System.out.println(msj);
-		lanzador.proteger(2);
+		lanzador.proteger(1);
 		return msj;
 	}
 	

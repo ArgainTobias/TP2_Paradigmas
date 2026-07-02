@@ -3,7 +3,13 @@ package reclutador;
 import java.util.List;
 import java.util.Random;
 
-import personajes.*;
+import personajes.Auror;
+import personajes.Comandante;
+import personajes.Estudiante;
+import personajes.Personaje;
+import personajes.Profesor;
+import personajes.Seguidor;
+import testBatalla.*;
 
 public class ReclutadorSimpleFactory {
 	private static Random rand = new Random();

@@ -9,8 +9,13 @@ public class ExpectoPatronum extends HechizoAtaque{
 		
 		String msj = lanzador.getNombre() + " lanza " + getClass().getSimpleName() + " a " + objetivo.getNombre();
 		System.out.println(msj);
-		objetivo.recibirDanio(50);
+		objetivo.recibirDanio(25*lanzador.getLvl());
 		objetivo.aturdir(1);
 		return msj;
 	}
+	 
+	 @Override
+		public String toString() {
+		    return getClass().getSimpleName();
+		}
 }

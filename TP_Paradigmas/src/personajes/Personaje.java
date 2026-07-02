@@ -48,7 +48,7 @@ public abstract class Personaje{
 	//PRIMITIVAS ESTADOS
 	
 	public void recibirDanio(int danio) {
-		this.estado=estado.recibirDanio(this, danio*lvl);
+		this.estado=estado.recibirDanio(this, danio);//*lvl
 	}
 	
 	public void proteger(int duracion) {

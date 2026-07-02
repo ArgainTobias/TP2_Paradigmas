@@ -69,14 +69,16 @@ public class Batallon {
 	}
 	private Hechizo elegirHechizoDisponible(Personaje p) {
         
-        for(Hechizo h : p.getHechizos()) {
-        	
-        	if(!lanzadosTurno.contains(h)) {
-        		return h;
+		Random rand = new Random();
+        	for(int i = 0; i < p.getHechizos().size() ; i++) {
+        		
+        		Hechizo h = p.getHechizos().get(rand.nextInt(p.getHechizos().size()-i));
+        		
+        		if(!lanzadosTurno.contains(h)) {
+            		return h;
+            	}
+        		
         	}
-        	
-        }
-
         return null;
     }
  
@@ -85,9 +87,7 @@ public class Batallon {
 		for(Personaje personaje : personajes){
 			
 			System.out.println(personaje);
-			for(Hechizo hechizo : personaje.getHechizos()) {
-				System.out.println("-> Hechizos disponibles del personaje: "+ hechizo);
-			}
+			System.out.println("-> Hechizos disponibles del personaje: "+personaje.getHechizos());
 			
 		}
 	}

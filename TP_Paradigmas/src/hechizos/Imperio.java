@@ -12,4 +12,9 @@ public class Imperio extends HechizoAtaque{
 			objetivo.aturdir(1);
 			return msj;
 		}
+	 
+	 @Override
+		public String toString() {
+		    return getClass().getSimpleName();
+		}
 }
