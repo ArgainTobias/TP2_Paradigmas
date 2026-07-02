@@ -5,11 +5,11 @@ public abstract class EstadoPersonaje {
 	public EstadoPersonaje recibirDanio(Personaje p, int danio) {
 		return this;
 	}
-	public EstadoPersonaje proteger(int duracion) {
+	public EstadoPersonaje proteger(Personaje p, int duracion) {
 		return this;
 	}
 	
-	public EstadoPersonaje aturdir(int duracion) {
+	public EstadoPersonaje aturdir(Personaje p, int duracion) {
 		return this;
 	}
 	

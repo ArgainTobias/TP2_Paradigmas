@@ -1,7 +1,11 @@
 package personajes;
 
-public class Estudiante extends Mortifago{
+import hechizos.*;
+
+public class Estudiante extends Mago{
 	public Estudiante (String nombre) {
-		super(100,1,nombre);
+		super(80,1,nombre);
+		agregarHechizo(new Expelliarmus());
+		agregarHechizo(new Anapneo());
 	}
 }

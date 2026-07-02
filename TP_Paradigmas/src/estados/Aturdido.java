@@ -10,6 +10,7 @@ public class Aturdido extends EstadoPersonaje {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public EstadoPersonaje recibirDanio(Personaje p, int danio) {
 		p.reducirHp(danio); // daño completo
 		if (p.getHp() <= 0) {
@@ -21,6 +22,21 @@ public class Aturdido extends EstadoPersonaje {
 	public EstadoPersonaje pasarTurno() {
 		duracion--;
 		if (duracion <= 0) {
+=======
+    public EstadoPersonaje recibirDanio(Personaje p, int danio) {
+        p.reducirHp(danio);                  // daño completo
+        if (p.getHp() <= 0) {
+        	System.out.println(p.getNombre() + " ha muerto");
+            return new Muerto();
+        }
+        return this;
+    }
+	
+	public EstadoPersonaje pasarTurno() {
+		duracion--;
+		if(duracion <=0) {
+
+>>>>>>> main
 			return new Sano();
 		}
 		return this;

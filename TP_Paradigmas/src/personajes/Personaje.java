@@ -32,22 +32,39 @@ public abstract class Personaje{
 		return hp;
 	}
 	
+	public int getLvl() {
+		return lvl;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public EstadoPersonaje getEstado() {
+		
+		return estado;
+	}
+	
 	//PRIMITIVAS ESTADOS
 	
 	public void recibirDanio(int danio) {
-		this.estado=estado.recibirDanio(this, danio);
+		this.estado=estado.recibirDanio(this, danio);//*lvl
 	}
 	
 	public void proteger(int duracion) {
-	    this.estado = estado.proteger(duracion);
+	    this.estado = estado.proteger(this, duracion);
 	}
 
 	public void aturdir(int duracion) {
-	    this.estado = estado.aturdir(duracion);
+	    this.estado = estado.aturdir(this, duracion);
 	}
 	
 	public boolean puedeActuar() {
 		return estado.puedeActuar();
+	}
+	
+	public boolean puedeSerObjetivo() {
+		return estado.puedeSerObjetivo();
 	}
 	
 	//PRIMITIVAS DE HECHIZOS
@@ -56,8 +73,8 @@ public abstract class Personaje{
 		hechizos.add(h);
 	}
 	
-	public void lanzarHechizo(Hechizo h,Personaje objetivo) {
-		h.ejecutar(this, objetivo);
+	public String lanzarHechizo(Hechizo h,Personaje objetivo) {
+		return h.ejecutar(this, objetivo);
 	}
 	
 
@@ -71,4 +88,23 @@ public abstract class Personaje{
 	    return nombre + " (" + getClass().getSimpleName() + ") [HP: " + hp + ", Nivel: " + lvl + ", Hechizos: " + hechizos.size() +"|"+ estado.getClass().getSimpleName()+"]";
 	}	
 	
+	//COMPARACION, HASH Y EQUALS PARA EL SET DE BATALLON
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if(this == obj) {
+			return true;
+		}
+		if(!(obj instanceof Personaje)) {
+			return false;
+		}
+		Personaje otroPersonaje = (Personaje) obj;
+		return this.nombre.equals(otroPersonaje.nombre);
+	}
+	
+	@Override
+	public int hashCode() {
+		return java.util.Objects.hash(nombre);
+	}
 }

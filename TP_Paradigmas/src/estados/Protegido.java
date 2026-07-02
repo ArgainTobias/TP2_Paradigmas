@@ -8,16 +8,23 @@ public class Protegido extends EstadoPersonaje{
 	}
 	@Override
 	public EstadoPersonaje recibirDanio(Personaje p,int danio) {
-		p.reducirHp(danio/2);
+		p.reducirHp(0);
 		duracion--;
-		if(p.getHp()<=0) {
-			return new Muerto();
-		}
 		if (duracion <= 0) {
+			System.out.println(p.getNombre() + " pierde su proteccion");
             return new Sano();               // se acabó la protección, vuelve a Sano
         }
 		return this;
 	}
 	
-	
+	@Override
+	public EstadoPersonaje aturdir(Personaje p, int duracion) {
+		duracion--;
+		if(duracion==0) {			
+			System.out.println(p.getNombre() + " pierde su proteccion");
+			return new Sano();
+		}
+		
+		return this;
+	}
 }
