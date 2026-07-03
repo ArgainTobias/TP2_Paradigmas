@@ -8,8 +8,11 @@ public class Expelliarmus extends HechizoAtaque {
 	public String ejecutar(Personaje lanzador, Personaje objetivo) {
 		String msj = lanzador.getNombre() + "(" + lanzador.getHp() + " HP) lanza " + getClass().getSimpleName() + " a "
 				+ objetivo.getNombre() + " (-" + 10 * lanzador.getLvl() + " HP)";
-		System.out.println(msj);
+		//System.out.println(msj);
 		objetivo.recibirDanio(10 * lanzador.getLvl());
+		if (objetivo.getHp() <= 0) {
+			msj += "\n — ¡" + objetivo.getNombre() + " ha caído!";
+		}
 		return msj;
 	}
 

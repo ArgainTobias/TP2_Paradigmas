@@ -11,6 +11,13 @@ public class Imperio extends HechizoAtaque {
 				+ objetivo.getNombre() + "(" + objetivo.getHp() + " HP)";
 		System.out.println(msj);
 		objetivo.aturdir(1);
+		if (objetivo.getHp() > 0) {
+			if (!objetivo.puedeActuar()) {
+				msj += "\n - ¡ " + objetivo.getNombre() + " ha sido aturdido!";
+			}
+		} else {
+			msj += "\n - ¡" + objetivo.getNombre() + " ha muerto!";
+		}
 		return msj;
 	}
 
