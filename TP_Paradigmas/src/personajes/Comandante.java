@@ -4,7 +4,7 @@ import hechizos.*;
 
 public class Comandante extends Mortifago{
 	public Comandante (String nombre) {
-		super(150,3,nombre);
+		super(150,3,nombre,150);
 		agregarHechizo(new Expelliarmus());
 		agregarHechizo(new AvadaKedavra());
 		agregarHechizo(new Imperio());
