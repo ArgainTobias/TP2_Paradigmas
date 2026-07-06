@@ -132,8 +132,7 @@ public class Gui {
 
 	private void inicializarElementos() {
 		Font fuenteNombres;
-		Font fuenteTitulo;   // Lumos/Cinzel para títulos
-		Font fuenteLog;      // Monospaced/Tahoma para el log
+		Font fuenteTitulo; 
 		try {
 			fuenteNombres = Font.createFont(Font.TRUETYPE_FONT, new File("recursos/IMFellEnglish-Italic.ttf"))
 					.deriveFont(Font.BOLD, 19f); // estilo y tamaño
@@ -147,9 +146,8 @@ public class Gui {
 		} catch (Exception e) {
 		    fuenteTitulo = new Font("Tahoma", Font.BOLD, 28);
 		}
-
-		fuenteLog = new Font("Monospaced", Font.PLAIN, 13);  // esta no necesita archivo, es del sistema
 		frmBatallaDeMagos = new JFrame();
+		frmBatallaDeMagos.getContentPane().setBackground(new Color(128, 0, 0));
 		frmBatallaDeMagos.setTitle("BATALLA DE MAGOS VS MORTIFAGOS");
 		frmBatallaDeMagos.setBounds(100, 100, 959, 665);
 		frmBatallaDeMagos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -160,7 +158,7 @@ public class Gui {
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setOpaque(true);
 		lblTitulo.setForeground(new Color(255, 255, 255));
-		lblTitulo.setBackground(new Color(0, 0, 0));
+		lblTitulo.setBackground(new Color(64, 0, 0));
 		lblTitulo.setFont(fuenteTitulo);
 		lblTitulo.setBounds(389, 11, 164, 41);
 		frmBatallaDeMagos.getContentPane().add(lblTitulo);
@@ -197,6 +195,7 @@ public class Gui {
 		frmBatallaDeMagos.getContentPane().add(barraMago2);
 
 		lblMago2 = new JLabel("Mago 2");
+		lblMago2.setForeground(new Color(255, 255, 255));
 		lblMago2.setBounds(217, 167, 213, 28);
 		lblMago2.setFont(fuenteNombres);
 		frmBatallaDeMagos.getContentPane().add(lblMago2);
@@ -207,6 +206,7 @@ public class Gui {
 		frmBatallaDeMagos.getContentPane().add(indMago2);
 
 		lblMago3 = new JLabel("Mago 3");
+		lblMago3.setForeground(new Color(255, 255, 255));
 		lblMago3.setBounds(217, 266, 215, 28);
 		lblMago3.setFont(fuenteNombres);
 		frmBatallaDeMagos.getContentPane().add(lblMago3);
@@ -233,6 +233,7 @@ public class Gui {
 		frmBatallaDeMagos.getContentPane().add(barraMago1);
 
 		lblMago1 = new JLabel("Mago 1");
+		lblMago1.setForeground(new Color(255, 255, 255));
 		lblMago1.setBounds(217, 68, 250, 22);
 		lblMago1.setFont(fuenteNombres);
 		frmBatallaDeMagos.getContentPane().add(lblMago1);
@@ -251,6 +252,7 @@ public class Gui {
 		frmBatallaDeMagos.getContentPane().add(barraMorti1);
 
 		lblMorti1 = new JLabel("Mago 2");
+		lblMorti1.setForeground(new Color(255, 255, 255));
 		lblMorti1.setBounds(580, 65, 174, 28);
 		lblMorti1.setFont(fuenteNombres);
 		frmBatallaDeMagos.getContentPane().add(lblMorti1);
@@ -269,6 +271,7 @@ public class Gui {
 		frmBatallaDeMagos.getContentPane().add(barraMorti2);
 
 		lblMorti2 = new JLabel("Mago 2");
+		lblMorti2.setForeground(new Color(255, 255, 255));
 		lblMorti2.setBounds(580, 167, 174, 28);
 		lblMorti2.setFont(fuenteNombres);
 		frmBatallaDeMagos.getContentPane().add(lblMorti2);
@@ -287,6 +290,7 @@ public class Gui {
 		frmBatallaDeMagos.getContentPane().add(barraMorti3);
 
 		lblMorti3 = new JLabel("Mago 2");
+		lblMorti3.setForeground(new Color(255, 255, 255));
 		lblMorti3.setBounds(580, 262, 174, 28);
 		lblMorti3.setFont(fuenteNombres);
 		frmBatallaDeMagos.getContentPane().add(lblMorti3);

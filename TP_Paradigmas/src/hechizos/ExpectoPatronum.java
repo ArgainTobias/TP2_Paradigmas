@@ -14,7 +14,7 @@ public class ExpectoPatronum extends HechizoAtaque {
 		objetivo.aturdir(1);
 		if (objetivo.getHp() > 0) {
 			if (!objetivo.puedeActuar()) {
-				msj += "\n - ¡ " + objetivo.getNombre() + " ha sido aturdido!";
+				msj += "\n - ¡" + objetivo.getNombre() + " ha sido aturdido!";
 			}
 		} else {
 			msj += "\n - ¡" + objetivo.getNombre() + " ha muerto!";

@@ -11,7 +11,9 @@ public class AvadaKedavra extends HechizoAtaque {
 				+ objetivo.getNombre() + " (100% HP)";
 		// System.out.println(msj);
 		if (objetivo.getHp() <= 0) {
-			msj += "\n — ¡" + objetivo.getNombre() + " ha caído!";
+			msj += "\n - ¡" + objetivo.getNombre() + " ha caído!";
+		}else {
+			msj += "\n - ¡" + objetivo.getNombre() + " ha sobrevivido al ataque!";
 		}
 		return msj;
 	}

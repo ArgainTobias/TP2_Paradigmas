@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import batallon.Batallon;
-import estados.Aturdido;
 import hechizos.Anapneo;
 import hechizos.AvadaKedavra;
 import hechizos.ExpectoPatronum;
@@ -18,7 +16,6 @@ import personajes.Comandante;
 import personajes.Estudiante;
 import personajes.Profesor;
 import personajes.Seguidor;
-import reclutador.ReclutadorSimpleFactory;
 
 class TestBatalla {
 

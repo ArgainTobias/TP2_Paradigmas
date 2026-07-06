@@ -48,7 +48,7 @@ public class Batallon {
 					Personaje obj = hechizo.seleccionarObjetivo(p, this, objetivo);
 					if (obj != null) {
 						log.append(p.lanzarHechizo(hechizo, obj)).append("\n");
-						//secuenciaAcciones.add(p.lanzarHechizo(hechizo, obj));
+						secuenciaAcciones.add(p.lanzarHechizo(hechizo, obj));
 						ArrayList<Hechizo> lanzados = hechizosLanzados.get(p);
 						lanzados.add(hechizo);
 						hechizosLanzados.put(p, lanzados); // agrego a la lista de lanzados del personaje
@@ -61,9 +61,9 @@ public class Batallon {
 				if(p.getHp() >0) {
 					log.append(p.getNombre() +" ("+ p.getHp()+" HP) pierde su turno porque esta " + p.getEstado().getClass().getSimpleName()).append("\n");
 					p.pasarTurno(1);
-				}
-						
+				}	
 			}
+			
 		}
 		return log.toString();
 
