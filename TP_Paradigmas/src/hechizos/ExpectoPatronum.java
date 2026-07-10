@@ -6,7 +6,6 @@ public class ExpectoPatronum extends HechizoAtaque {
 
 	@Override
 	public String ejecutar(Personaje lanzador, Personaje objetivo) {
-
 		String msj = lanzador.getNombre() + "(" + lanzador.getHp() + " HP) lanza " + getClass().getSimpleName() + " a "
 				+ objetivo.getNombre() + " (-" + 25 * lanzador.getLvl() + " HP)";
 		System.out.println(msj);
