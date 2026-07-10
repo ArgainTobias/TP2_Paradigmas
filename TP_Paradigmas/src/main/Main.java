@@ -49,8 +49,13 @@ public class Main {
               } else {
                 System.out.println("¡Los mortífagos han ganado la batalla!");
               }
-            }
-	
+              System.out.println("----------------SECUENCIA MAGOS-------------------");
+              batallonMagos.mostrarSecuencia();
+              System.out.println("----------------SECUENCIA MORTIFAGOS-------------------");
+              batallonMortifagos.mostrarSecuencia();
+	}
+			 
+			 
 	
 	
         }

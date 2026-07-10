@@ -38,7 +38,7 @@ public class Batallon {
 
 	public String atacar(Batallon objetivo) {
 		StringBuilder log = new StringBuilder();
-		
+		String aux;
 		lanzadosTurno.clear(); // vacio el set porque empieza el turno
 		for (Personaje p : personajes) {
 
@@ -47,8 +47,9 @@ public class Batallon {
 				if (hechizo != null) {
 					Personaje obj = hechizo.seleccionarObjetivo(p, this, objetivo);
 					if (obj != null) {
-						log.append(p.lanzarHechizo(hechizo, obj)).append("\n");
-						secuenciaAcciones.add(p.lanzarHechizo(hechizo, obj));
+						aux= p.lanzarHechizo(hechizo, obj);
+						log.append(aux).append("\n");
+						secuenciaAcciones.add(aux);
 						ArrayList<Hechizo> lanzados = hechizosLanzados.get(p);
 						lanzados.add(hechizo);
 						hechizosLanzados.put(p, lanzados); // agrego a la lista de lanzados del personaje
@@ -77,6 +78,12 @@ public class Batallon {
 			}
 		}
 		return saludables;
+	}
+	
+	public void mostrarSecuencia() {
+		for (String string : secuenciaAcciones) {
+			System.out.println(string);
+		}
 	}
 
 	private Hechizo elegirHechizoDisponible(Personaje p) {
