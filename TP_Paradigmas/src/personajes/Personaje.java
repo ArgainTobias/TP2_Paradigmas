@@ -8,16 +8,15 @@ import estados.Sano;
 
 public abstract class Personaje{
 	
-	private int hp,lvl,hpMaximo;
+	private int hp,lvl;
 	private String nombre;
 	private List <Hechizo> hechizos = new ArrayList<>();
 	private EstadoPersonaje estado;
 	
-	public Personaje(int hp, int lvl, String nombre,int hpMax) {
+	public Personaje(int hp, int lvl, String nombre) {
 		this.hp = hp;
 		this.lvl = lvl;
 		this.nombre = nombre;
-		this.hpMaximo = hpMax;
 		estado = new Sano();
 	}
 	// GETTERS Y SETTERS PERSONAJE
@@ -31,10 +30,6 @@ public abstract class Personaje{
 	
 	public int getHp() {
 		return hp;
-	}
-	
-	public int getHpMaximo() {
-		return hpMaximo;
 	}
 	
 	public int getLvl() {

@@ -25,24 +25,22 @@ public class Main {
             batallonMortifagos.mostrarBatallon();   
             System.out.println("-----------ARRANCA LA BATALLA--------------");
             
-            
-            
-            
             while (batallonMagos.tienePersonajesSaludables() && batallonMortifagos.tienePersonajesSaludables()) {
             	System.out.println("------------Turno "+ i +"----------------");
                 if (rand.nextBoolean()) {
-                  System.out.println(batallonMagos.atacar(batallonMortifagos));
+                  batallonMagos.atacar(batallonMortifagos);
                   if (batallonMortifagos.tienePersonajesSaludables()) {
-                	  System.out.println(batallonMortifagos.atacar(batallonMagos));
+                    batallonMortifagos.atacar(batallonMagos);
                   }
                 } else {
-                	System.out.println(batallonMortifagos.atacar(batallonMagos));
+                  batallonMortifagos.atacar(batallonMagos);
                   if (batallonMagos.tienePersonajesSaludables()) {
-                	  System.out.println(batallonMagos.atacar(batallonMortifagos));
+                    batallonMagos.atacar(batallonMortifagos);
                   }
                 }
                 i++;           
               }
+            
             	System.out.println("----------------------------");
               if (batallonMagos.tienePersonajesSaludables()) {
                 System.out.println("¡Los magos han ganado la batalla!");
@@ -50,9 +48,6 @@ public class Main {
                 System.out.println("¡Los mortífagos han ganado la batalla!");
               }
             }
-	
-	
-	
         }
 	
 		
