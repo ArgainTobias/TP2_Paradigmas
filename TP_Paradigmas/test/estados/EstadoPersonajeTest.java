@@ -57,7 +57,7 @@ class EstadoPersonajeTest {
     void aturdido_vuelve_a_actuar() {
         a.aturdir(1);
         assertFalse(a.puedeActuar());
-        a.pasarTurno(1);
+        a.pasarTurno();
         assertTrue(a.puedeActuar());
     }
 
