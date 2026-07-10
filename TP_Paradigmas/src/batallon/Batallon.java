@@ -53,7 +53,7 @@ public class Batallon {
 			} else {
 				if(p.getHp() >0) {
 					System.out.println(p.getNombre() +" ("+ p.getHp()+" HP) pierde su turno porque esta " + p.getEstado().getClass().getSimpleName());
-					p.pasarTurno(1);
+					p.pasarTurno();
 				}
 						
 			}

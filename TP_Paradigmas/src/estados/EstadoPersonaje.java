@@ -13,7 +13,7 @@ public abstract class EstadoPersonaje {
 		return this;
 	}
 	
-	public EstadoPersonaje pasarTurno(Personaje p,int duracion) {
+	public EstadoPersonaje pasarTurno(Personaje p) {
 		return this;
 	}
 	
