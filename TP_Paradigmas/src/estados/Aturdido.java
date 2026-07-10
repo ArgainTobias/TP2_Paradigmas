@@ -20,8 +20,8 @@ public class Aturdido extends EstadoPersonaje {
     }
 	
 	@Override
-	public EstadoPersonaje pasarTurno(Personaje p) {
-		this.duracion--;
+	public EstadoPersonaje pasarTurno(Personaje p, int duracion) {
+		duracion--;
 		if(duracion <=0) {
 			System.out.println("--"+p.getNombre() +" ("+ p.getHp()+"HP) se recupera");
 			return new Sano();
