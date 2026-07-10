@@ -17,6 +17,10 @@ public class Batallon {
 		this.hechizosLanzados = new HashMap<Personaje, ArrayList<Hechizo>>();
 		this.lanzadosTurno = new HashSet<Hechizo>();
 	}
+	
+	public List<Personaje> getPersonajes() {
+	    return new ArrayList<>(personajes);
+	}
 
 	public void agregarPersonaje(Personaje p) {
 		this.personajes.add(p);
@@ -32,7 +36,9 @@ public class Batallon {
 		return false;
 	}
 
-	public void atacar(Batallon objetivo) {
+	public String atacar(Batallon objetivo) {
+		StringBuilder log = new StringBuilder();
+		
 		lanzadosTurno.clear(); // vacio el set porque empieza el turno
 		for (Personaje p : personajes) {
 
@@ -41,6 +47,7 @@ public class Batallon {
 				if (hechizo != null) {
 					Personaje obj = hechizo.seleccionarObjetivo(p, this, objetivo);
 					if (obj != null) {
+						log.append(p.lanzarHechizo(hechizo, obj)).append("\n");
 						secuenciaAcciones.add(p.lanzarHechizo(hechizo, obj));
 						ArrayList<Hechizo> lanzados = hechizosLanzados.get(p);
 						lanzados.add(hechizo);
@@ -48,16 +55,18 @@ public class Batallon {
 						lanzadosTurno.add(hechizo); // agrego al set de los lanzados en este turno
 					}
 				} else {
-					System.out.println(p.getNombre() + " no tiene hechizos disponibles para lanzar este turno");
+					log.append(p.getNombre() + " no tiene hechizos disponibles para lanzar este turno").append("\n");
 				}
 			} else {
 				if(p.getHp() >0) {
-					System.out.println(p.getNombre() +" ("+ p.getHp()+" HP) pierde su turno porque esta " + p.getEstado().getClass().getSimpleName());
+					log.append(p.getNombre() +" ("+ p.getHp()+" HP) pierde su turno porque esta " + p.getEstado().getClass().getSimpleName()).append("\n");
 					p.pasarTurno(1);
-				}
-						
+				}	
 			}
+			
 		}
+		return log.toString();
+
 	}
 
 	public List<Personaje> getPersonajesSaludables() {
