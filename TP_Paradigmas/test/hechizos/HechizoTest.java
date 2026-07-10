@@ -94,5 +94,4 @@ class HechizoTest {
 		assertEquals("Aturdido",s.getEstado().getClass().getSimpleName());
 	}
 	
-	
 }

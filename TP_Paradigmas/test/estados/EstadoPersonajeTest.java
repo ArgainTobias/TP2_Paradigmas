@@ -19,55 +19,62 @@ class EstadoPersonajeTest {
 	
 	@Test
     void sano_recibeDanioCompleto() {
-     // arranca Sano, HP 150
         a.recibirDanio(30);
-        assertEquals(120, a.getHp());        // daño completo: 100 - 30
+        assertEquals(120, a.getHp());
     }
 
     @Test
     void sano_puedeActuar() {   
         assertTrue(a.puedeActuar());
     }
- // --- Transición a Protegido ---
+    
+    // Transición a Protegido
 
     @Test
-    void protegido_recibeMitadDeDanio() {
-        a.proteger(3);                      // pasa a Protegido
+    void protegido_noRecibeDanio() {
+        a.proteger(1);                      // pasa a Protegido
         a.recibirDanio(40);
-        assertEquals(150, a.getHp());        // mitad: 100 - 20
+        assertEquals(150, a.getHp());        
     }
 
     @Test
     void protegido_vuelveASanoTrasAgotarDuracion() {
-        a.proteger(2);                      // protegido por 2 ataques
-        a.recibirDanio(10);                 // ataque 1: mitad (5) → HP 95, queda 1 de duración
-        a.recibirDanio(10);                 // ataque 2: mitad (5) → HP 90, duración agotada → vuelve a Sano
-        a.recibirDanio(10);                 // ataque 3: ya Sano, daño completo (10) → HP 80
+        a.proteger(1);                      
+        a.recibirDanio(10);                 
+        a.recibirDanio(10);                
         assertEquals(140, a.getHp());
     }
 
-    // --- Transición a Aturdido ---
+    //  Transición a Aturdido 
 
     @Test
-    void aturdido_noPuedeActuar() {
+    void aturdido_noPuedeActuar_porAturdimiento() {
         a.aturdir(1);
         assertFalse(a.puedeActuar());
     }
+    
+    @Test
+    void aturdido_vuelve_a_actuar() {
+        a.aturdir(1);
+        assertFalse(a.puedeActuar());
+        a.pasarTurno(1);
+        assertTrue(a.puedeActuar());
+    }
 
-    // --- Transición a Muerto ---
+    //  Transición a Muerto
 
     @Test
     void muerto_cuandoHpLlegaACero() {
-    	// HP 100
-        a.recibirDanio(150);                // daño mayor que el HP
-        assertEquals(0, a.getHp());         // no baja de 0
-        assertFalse(a.puedeActuar());       // un muerto no puede actuar
+    	
+        a.recibirDanio(150);                
+        assertEquals(0, a.getHp());         
+        assertFalse(a.puedeActuar());       
     }
 
     @Test
     void muerto_noRecibeMasDanio() {
-        a.recibirDanio(150);                // muere
-        a.recibirDanio(50);                 // intenta pegarle de nuevo
-        assertEquals(0, a.getHp());         // sigue en 0, no baja más
+        a.recibirDanio(150);                
+        a.recibirDanio(50);                 
+        assertEquals(0, a.getHp());         
     }
 }
